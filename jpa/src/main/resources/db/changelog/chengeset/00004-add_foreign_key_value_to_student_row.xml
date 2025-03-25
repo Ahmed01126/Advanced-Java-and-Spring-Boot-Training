@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1725216662832-1" author="abdelaziz">
+        <update tableName="student">
+            <column name="address_id" value="4150af1e-88e8-4fb3-af95-d5e0f7da3b71"/>
+            <where>email = 'lamiaa.khaled@pioneers.com'</where>
+        </update>
+
+        <rollback>
+            <update tableName="student">
+                <column name="address_id"/>
+                <where>email = 'lamiaa.khaled@pioneers.com'</where>
+            </update>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

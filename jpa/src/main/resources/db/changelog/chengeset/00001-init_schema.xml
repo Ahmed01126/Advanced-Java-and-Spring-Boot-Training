@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create_student_table" author="abdelaziz">
+        <createTable tableName="student">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="pk_student_id"/>
+            </column>
+            <column name="name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR2">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uk_student_email"/>
+            </column>
+            <column name="age" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="marks" type="FLOAT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="student"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="create_address_table" author="abdelaziz">
+        <createTable tableName="address">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="pk_address_id"/>
+            </column>
+            <column name="apartment_number" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="home_number" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="address"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
