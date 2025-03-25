@@ -1,0 +1,28 @@
+version: '2.3'
+
+services:
+  postgres:
+    container_name: postgres_container
+    restart: always
+    image: 'postgres'
+    ports:
+      - 5432:5432
+    networks:
+      - my_network
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+
+  app:
+    container_name: student_app
+    restart: always
+    build: .
+    networks:
+      - my_network
+    ports:
+      - 8081:8080
+    depends_on:
+      - postgres
+
+networks:
+  my_network:

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1725214422193-1" author="radwan">
+        <insert tableName="address">
+            <column name="id" value="4150af1e-88e8-4fb3-af95-d5e0f7da3b71"/>
+            <column name="apartment_number" value="1"/>
+            <column name="home_number" value="5"/>
+            <column name="street" value="Abdelaziz"/>
+            <column name="city" value="Down Town"/>
+            <column name="state" value="Cairo"/>
+            <column name="country" value="Egypt"/>
+        </insert>
+
+        <rollback>
+            <sql>DELETE FROM address WHERE id = '4150af1e-88e8-4fb3-af95-d5e0f7da3b71';</sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="1725215898216-1" author="radwan">
+        <insert tableName="student">
+            <column name="id" value="4421f515-6f09-4048-8631-8253a4a337b8"/>
+            <column name="name" value="Lamiaa Khaled"/>
+            <column name="email" value="lamiaa.khaled@pioneers.com"/>
+            <column name="age" value="21"/>
+            <column name="marks" value="99.9"/>
+            <column name="phone_number" value="+201012345678"/>
+        </insert>
+
+        <rollback>
+            <delete tableName="student">
+                <where>email = 'lamiaa.khaled@pioneers.com'</where>
+            </delete>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
